@@ -12,22 +12,18 @@ contract TodoList{
         bool completed;
     }
 
-    // event CreateTask {
-    //     uint id,
-    //     string content,
-    //     bool completed
-    // };
-
-   
+    event TaskCreated (
+        uint id,
+        string content,
+        bool completed
+    );
     constructor() public {
         createTask("Rohit Demo ");
     }
-
     function createTask(string memory _content) public {
         taskCount ++;
         tasks[taskCount] = Task(taskCount, _content , false);
-        //emit CreateTask
-
+        emit TaskCreated(taskCount, _content, false);
     }
 
 }
